@@ -3,7 +3,11 @@
 
 usage：
 > python manage.py runserver 0.0.0.0:8000
-即从所有本机IP进入服务器
+
+即从所有本机IP进入服务器，默认url为
+
+请通过[host]/verbal?lid=[list ID]&uid=[unit ID] 访问。不指定[list ID]会响应404.
+
 
 Tech:
 1. static/data.json 原始数据为知名论坛bbs.zhan.com下载的《再要你命3000》。通过在线PDF转TXT解析并通过简单的规则结构化。按照源文件的说明，请不要用于商业用途。
