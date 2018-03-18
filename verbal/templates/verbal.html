@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+
+    <title>GRE3000 填空练习</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1 align="center">
+                    List {{ list_id }}
+                </h1>
+                <h3 align="center">
+                    Unit {{ unit_id }}
+                </h3>
+                <br>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    {% for verbal in verbal_list %}
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading{{ verbal.word }}">
+                          <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#item{{ verbal.word }}" aria-expanded="false" aria-controls="item{{ verbal.word }}">
+                              {{ verbal.eg }}
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="item{{ verbal.word }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ verbal.word }}">
+                          <div class="panel-body">
+                            <ul>
+                                <li> {{ verbal.word }} </li>
+                                <li> {{ verbal.paraphrase }}</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>
