@@ -27,14 +27,14 @@
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     {% for verbal in verbal_list %}
                       <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading{{ verbal.word }}">
+                        <div class="panel-heading" role="tab" id="heading{{ verbal.hash }}">
                           <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#item{{ verbal.word }}" aria-expanded="false" aria-controls="item{{ verbal.word }}">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#item{{ verbal.hash }}" aria-expanded="false" aria-controls="item{{ verbal.hash }}">
                               {{ verbal.eg }}
                             </a>
                           </h4>
                         </div>
-                        <div id="item{{ verbal.word }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ verbal.word }}">
+                        <div id="item{{ verbal.hash }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ verbal.hash }}">
                           <div class="panel-body">
                             <ul>
                                 <li> {{ verbal.word }} </li>
@@ -45,7 +45,17 @@
                       </div>
                     {% endfor %}
                 </div>
-
+            </div>
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="btn-group" role="group" aria-label="...">
+                    {% if unit_id != "All" %}
+                    <a type="button" class="btn btn-default" href="{% url "verbal" %}?lid={{ list_id }}&uid={{ unit_id | add:-1 }}">Prev Unit</a>
+                    <a type="button" class="btn btn-default" href="{% url "verbal" %}?lid={{ list_id }}">Show All Unit</a>
+                    <a type="button" class="btn btn-default" href="{% url "verbal" %}?lid={{ list_id }}&uid={{ unit_id | add:1 }}">Next Unit</a>
+                    {% else %}
+                    <a type="button" class="btn btn-default" href="{% url "verbal" %}?lid={{ list_id }}&uid=1">Show Less Unit</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
