@@ -12,6 +12,12 @@
     <title>GRE3000 填空练习</title>
   </head>
   <body>
+      <form class="navbar-form navbar-left" action="" role="search">
+          <div class="form-group">
+              <input type="text" class="form-control" id="search_input" placeholder="Search from Arxiv Digest">
+          </div>
+          <button class="btn btn-default" id="search">Search Arxiv</button>
+      </form>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -23,7 +29,7 @@
                 </h3>
                 <br>
             </div>
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-6 col-md-offset-3">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     {% for verbal in verbal_list %}
                       <div class="panel panel-default">
@@ -65,5 +71,11 @@
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+        $('form').submit(function(){
+          window.location.href = '{% url "verbal" %}?uid=1&lid=' + $('input').val();
+          return false;
+        })
+    </script>
   </body>
 </html>
