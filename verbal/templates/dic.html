@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <title>单词本</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+                <nav class="navbar navbar-default">
+                    <div>
+                        <form class="navbar-form" action="" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="search_input" placeholder="Enter word">
+                            </div>
+                        </form>
+                    </div>
+
+                </nav>
+
+            <div class="col-md-6 col-md-offset-3">
+                <h1 align="center">
+                    {{ word }}
+                </h1>
+                <h3 align="center">
+                    Usage
+                </h3>
+                <br>
+                <div>
+                    {% for usage in value.usage %}
+                        <b>
+                        {{ usage.paraphrase}}
+                        </b>
+                        <p>
+                            <b>Synonym</b>：
+                            {% for syn in usage.synonym %}
+                                {{ syn }}
+                            {% endfor %}
+                        </p>
+                        <p>
+                            <b>Acronym</b>:
+                            {% for acr in usage.acronym %}
+                                {{ acr }}
+                            {% endfor %}
+                        </p>
+                        <div>
+                        {% for eg in usage.eg %}
+                            <p>{{ eg.eng }} {{ eg.cn }}</p>
+                        {% endfor %}
+                        </div>
+
+                    {% endfor %}
+                </div>
+                <br>
+                <h3 align="center">
+                    Synonym Reference
+                </h3>
+                <br>
+                <div align="center">
+
+                    {% for syn in value.synref %}
+
+                            <a href='{%url "dict"%}?q={{ syn }}'>{{ syn }}</a>
+
+                    {% endfor %}
+
+                </div>
+                <br>
+                <h3 align="center">
+                    Acronym Reference
+                </h3>
+                <br>
+                <div align="center">
+                    {% for acr in value.acrref %}
+
+                            <a href='{%url "dict"%}?q={{ acr }}'>{{ acr }}</a>
+
+                    {% endfor %}
+
+
+                </div>
+                <br>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script>
+        $('form').submit(function () {
+            window.location.href = '{% url "dict" %}?q=' + $('input').val();
+            return false;
+        })
+    </script>
+</body>
+</html>

@@ -19,5 +19,7 @@ from verbal import views as verbal_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^verbal/', verbal_views.VerbalView.as_view(),name='verbal')
+    url(r'^verbal/', verbal_views.VerbalView.as_view(),name='verbal'),
+    url(r'^dict/', verbal_views.Dictview.as_view(),name='dict'),
+    url(r'^note/', verbal_views.MemoView.as_view(),name='note')
 ]

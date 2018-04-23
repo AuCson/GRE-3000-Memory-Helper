@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 import json
 from django.http import HttpResponseNotFound
+from django.http import HttpResponse
 # Create your views here.
 
 
@@ -45,3 +46,26 @@ class VerbalView(View):
         list_id = lid
         unit_id = request.GET['uid'] if 'uid' in request.GET else 'All'
         return render(request, 'verbal.html', {'verbal_list':render_list, 'list_id':list_id, 'unit_id':unit_id})
+
+class Dictview(View):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        with open('./static/dic.json') as f:
+            self.data = json.load(f)
+
+    def get(self, request, *args, **kwargs):
+        w = request.GET.get('q','abandon')
+        if w in self.data:
+            #s = json.dumps(self.data[w],ensure_ascii=False,indent=4)
+            return render(request,'dic.html',{'word':w,'value':self.data[w]})
+        else:
+            return HttpResponseNotFound()
+
+class MemoView(View):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def get(self, request, *args, **kwargs):
+            return render(request,'memo.html')
+
+
