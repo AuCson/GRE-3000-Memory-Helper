@@ -65,11 +65,11 @@
             <div class="col-md-6 col-md-offset-3 text-center">
                 <div class="btn-group" role="group" aria-label="...">
                     {% if unit_id != "All" %}
-                    <a type="button" class="btn btn-default" href="{% url " verbal " %}?lid={{ list_id }}&uid={{ unit_id | add:-1 }}">Prev Unit</a>
-                    <a type="button" class="btn btn-default" href="{% url " verbal " %}?lid={{ list_id }}">Show All Unit</a>
-                    <a type="button" class="btn btn-default" href="{% url " verbal " %}?lid={{ list_id }}&uid={{ unit_id | add:1 }}">Next Unit</a>
+                    <a type="button" class="btn btn-default" href="{% url "verbal" %}?lid={{ list_id }}&uid={{ unit_id | add:-1 }}">Prev Unit</a>
+                    <a type="button" class="btn btn-default" href="{% url "verbal" %}?lid={{ list_id }}">Show All Unit</a>
+                    <a type="button" class="btn btn-default" href="{% url "verbal" %}?lid={{ list_id }}&uid={{ unit_id | add:1 }}">Next Unit</a>
                     {% else %}
-                    <a type="button" class="btn btn-default" href="{% url " verbal " %}?lid={{ list_id }}&uid=1">Show Less Unit</a>
+                    <a type="button" class="btn btn-default" href="{% url "verbal" %}?lid={{ list_id }}&uid=1">Show Less Unit</a>
                     {% endif %}
                 </div>
             </div>
