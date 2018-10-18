@@ -3,7 +3,7 @@
 usage：
 > python manage.py runserver 0.0.0.0:8000
 
-即可从所有本机IP进入服务器。目前一个网站运行在http://aucson.imwork.net/[verbal|dict]，但随时可能关闭。
+即可从所有本机IP进入服务器。目前一个网站运行在http://aucson.imwork.net/{verbal|dict}.
 
 # 功能
 1. 例句模式。将《GRE再要你命3000词》中的例句按照规则提取改编，辅助单词记忆。
